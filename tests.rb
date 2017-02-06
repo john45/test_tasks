@@ -1,7 +1,32 @@
-# # task1 number 78
-# arr = [23,2,4,77,2,4,7,8,44,90,5,67,1,76,80]
-# def find_el(in_arr, el)
-# end
+# task 1
+number = 6
+in_arr = [1,4,3,2]
+
+def find_el(in_arr, number)
+  i = 0
+  y = i + 1
+  finish_result = in_arr
+
+  while i < (in_arr.count - 1) do
+    middle_result = in_arr[i..y]
+    middle = in_arr[i..y].inject(:+)
+    if middle >= number and (in_arr[i..y].count >= 2)
+      finish_result = middle_result if middle_result.count < finish_result.count
+      i += 1
+      y = i + 1
+    else
+      if y == (in_arr.count - 1)
+        i += 1
+        y = i + 1
+      else
+        y += 1
+      end
+    end
+  end
+  puts "task 1: minimum elements is #{finish_result.count} and it's #{finish_result}"
+end
+
+find_el(in_arr, number)
 
 
 # task2, sample 1
@@ -27,7 +52,7 @@ puts "task 2 sample - 1, executing #{Time.now - date1}, index is #{t}"
 
 date1 = Time.now
 t = task_two_two((1..1000_000).to_a, 999999)
-puts "executing #{Time.now - date1}, index is #{t}"
+puts "task 2 sample - 2, executing #{Time.now - date1}, index is #{t}"
 
 
 # task 3
